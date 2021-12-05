@@ -8,9 +8,10 @@ public class DataPersManager : MonoBehaviour
 {
     public static DataPersManager instance;
 
-    public string playerStr;
     public Text playerText;  // variable, name of the player (Text)
-    public int score, bestScore;  // current score and best score of the player
+    public string playerStr;
+    public string bestScoreStr;
+    public int bestScore;  // current best score of the player
     public Text scoreText, bestScoreText, gameOverScoreText;   // For UI
 
     private void Awake()
@@ -25,36 +26,6 @@ public class DataPersManager : MonoBehaviour
         instance = this;  // Creates the instance
 
         LoadPlayer();  // load name of player at first
-    }
-
-    public void AddScore()
-    {
-        score++;
-        UpdateBestScore();
-        scoreText.text = score.ToString();
-        gameOverScoreText.text = score.ToString();
-    }
-
-    public void UpdateBestScore()
-    {
-        if (score > bestScore)
-        {
-            bestScore = score;
-            bestScoreText.text = bestScore.ToString();
-        }
-    }
-
-    public void ResetScore()
-    {
-        score = 0;
-        scoreText.text = score.ToString();
-        gameOverScoreText.text = score.ToString();
-    }
-
-    public void ClearBestScore()
-    {
-        bestScore = 0;
-        bestScoreText.text = bestScore.ToString();
     }
 
     [System.Serializable]
@@ -92,9 +63,11 @@ public class DataPersManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(jsonFile);
             // assign value of player (class SaveData) to player (class DataPersManager)
             playerStr = data.playerData;
+            playerText.text = playerStr;
             bestScore = data.bestScoreData;
         }
         else
             Debug.Log("No hay datos guardados");
+        
     }
 }

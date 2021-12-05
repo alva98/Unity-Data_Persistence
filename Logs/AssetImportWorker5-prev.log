@@ -9,17 +9,17 @@ C:\Program Files\Unity\2020.3.20f1\Editor\Unity.exe
 -batchMode
 -noUpm
 -name
-AssetImportWorker1
+AssetImportWorker5
 -projectPath
 F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 -logFile
-Logs/AssetImportWorker1.log
+Logs/AssetImportWorker5.log
 -srvPort
-49941
+51245
 Successfully changed project path to: F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 677.02 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 258.86 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
@@ -36,5 +36,5 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56340
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56648
 Begin MonoManager ReloadAssembly

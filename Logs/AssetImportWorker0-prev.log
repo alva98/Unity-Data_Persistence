@@ -15,11 +15,11 @@ F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49941
+51245
 Successfully changed project path to: F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 F:/Users/Docente/Documents/Unity projects/Github/repo2/Unity-Data_Persistence
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 378.77 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 184.53 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/2020.3.20f1/Editor/Data/Resources/UnitySubsystems
@@ -32,9 +32,3 @@ Direct3D:
     Vendor:   
     VRAM:     1792 MB
     Driver:   10.18.14.5180
-Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/2020.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56716
-Begin MonoManager ReloadAssembly

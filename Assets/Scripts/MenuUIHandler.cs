@@ -12,41 +12,31 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
-    public Text bestScoreText;
-    //public InputField inputPlayerName;
-    public Button start;
-    public Text playerName;
-    private bool isActive;
-    //public GameObject inputPlayer;
+    public InputField playerInput;
+    public Text playerNameText;
+    private bool isActive=true;
+    public GameObject StartGame;
 
-    // set the name of the player
-    public void SetPlayerName(Text playerMenu)
+    public void Start()
     {
-        if (playerMenu != null)
-        {
-            isActive = true;
-        }
-        else
-        {
-            isActive = false;
-        }
+        playerInput = GameObject.FindObjectOfType<InputField>();
+        StartGame.SetActive(true);
+    }
 
-        if (isActive)
-        {
-            Debug.Log("Button Start is ACTIVE");
-            //start.enabled();
-            DataPersManager.instance.playerStr = playerMenu.text;
-        }
-        else
-        {
-            Debug.Log("Button Start is NOT ACTIVE");
-        }
+    public void SetPlayerName(string s)
+    {
+        playerNameText.text = s;
+        Debug.Log("(MenuUIHandler.SetPlayerName) - Nombre del usuario: " + playerNameText.text);  // verifica en consola nombre de jugador
+        DataPersManager.instance.playerStr = playerNameText.text;   // asigna el nombre del jugador a la instancia que maneja la persistencia de datos
     }
 
     // Load a scene
     public void StartScene()
     {
-        SetPlayerName(playerName);
+        if(DataPersManager.instance.playerStr == null)
+        {
+            Debug.Log("(MenuUIHandler.StartScene) -No se coloco el nombre del usuario.");
+        }
 
         if (isActive)
         {
@@ -57,11 +47,13 @@ public class MenuUIHandler : MonoBehaviour
     // Exit of the app
     public void Exit()
     {
+        Debug.Log("Usuario: " + playerNameText.text);
         // save name of player on exit
-        DataPersManager.instance.SavePlayer(); 
+        DataPersManager.instance.SavePlayer();
 
         // Compiler pre-directive to quit Unity player
 #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
         EditorApplication.ExitPlaymode();
 #else
     	Application.Quit();
