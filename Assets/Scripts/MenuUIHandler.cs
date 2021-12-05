@@ -12,21 +12,20 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
-    public InputField playerInput;
+    //public InputField playerInput;
     public Text playerNameText;
     private bool isActive=true;
     public GameObject StartGame;
 
     public void Start()
     {
-        playerInput = GameObject.FindObjectOfType<InputField>();
+        //playerInput = GameObject.FindObjectOfType<InputField>();
         StartGame.SetActive(true);
     }
 
     public void SetPlayerName(string s)
     {
         playerNameText.text = s;
-        Debug.Log("(MenuUIHandler.SetPlayerName) - Nombre del usuario: " + playerNameText.text);  // verifica en consola nombre de jugador
         DataPersManager.instance.playerStr = playerNameText.text;   // asigna el nombre del jugador a la instancia que maneja la persistencia de datos
     }
 

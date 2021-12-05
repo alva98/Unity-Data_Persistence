@@ -62,6 +62,8 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         scoreText.text = $"Score : {m_Points}";
+        if (m_Points > DataPersManager.instance.bestScore)
+            UpdateBestScore();
     }
 
     public void GameOver()
@@ -72,11 +74,7 @@ public class MainManager : MonoBehaviour
 
     public void UpdateBestScore()
     {
-        if (m_Points > bestScore)
-        {
-            bestScore = m_Points;
-            bestScoreText.text = bestScore.ToString();
-        }
+        DataPersManager.instance.bestScore = m_Points;
     }
 
     public void ResetScore()

@@ -14,21 +14,16 @@ public class MainUIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerNameMainUI = gameObject.GetComponent<Text>();
-        bestScoreMainUIText = gameObject.GetComponent<Text>();
-
        if(DataPersManager.instance != null)
         {
-            // Put the player's name in gameObject PlayerText
-            string s = "Player: " + DataPersManager.instance.playerStr;
-            playerNameMainUI.text = s;
-            Debug.Log("(MainUIHandler.Start) -Almacenado en DataPersManager.instance.playerStr: " + DataPersManager.instance.playerStr);
-            Debug.Log("(MainUIHandler.Start) -Asignado a s: " + s);
-            Debug.Log("(MainUIHandler.Start) -Guardado en playerNameMainUI.text: " + playerNameMainUI.text);
+            // Put the player's name in gameObject PlayerText (in Editor)
+            playerNameMainUI.text = "Player: " + DataPersManager.instance.playerStr;
+            // Debug.Log("(MainUIHandler.Start) -Almacenado en DataPersManager.instance.playerStr: " + DataPersManager.instance.playerStr);
 
             // Put the best score in gameObject BestScoreText
-            int bestScore = DataPersManager.instance.bestScore;
-            //bestScoreMainUIText.text = "Best score: " + bestScore.ToString();
+            //Debug.Log("(MainUIHandler.Start) -Almacenado en DataPersManager.instance.bestScore: " + DataPersManager.instance.bestScore);
+            bestScoreMainUIText.text = "Best score: " + DataPersManager.instance.bestScore.ToString();
+            Debug.Log("(MainUIHandler.Start) -Recien guardado en bestScoreMainUIText.text: " + bestScoreMainUIText.text);
         }
     }
 
@@ -40,6 +35,7 @@ public class MainUIHandler : MonoBehaviour
 
     public void BackToMenu()
     {
+        Debug.Log("mainManager.m_GameOver: " + mainManager.m_GameOver);
         if (mainManager.m_GameOver)
         {
             //back to Menu.
