@@ -9,7 +9,7 @@ public class MainManager : MonoBehaviour
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
-    public Text scoreText, bestScoreText;
+    public Text scoreText;
     public GameObject GameOverText;
     private bool m_Started = false;
     private int m_Points, bestScore;
@@ -63,7 +63,9 @@ public class MainManager : MonoBehaviour
         m_Points += point;
         scoreText.text = $"Score : {m_Points}";
         if (m_Points > DataPersManager.instance.bestScore)
+        {
             UpdateBestScore();
+        }
     }
 
     public void GameOver()
@@ -81,12 +83,5 @@ public class MainManager : MonoBehaviour
     {
         m_Points = 0;
         scoreText.text = m_Points.ToString();
-    }
-
-    public void ClearBestScore()
-    {
-        bestScore = 0;
-        bestScoreText.text = bestScore.ToString();
-        DataPersManager.instance.bestScore = 0;
     }
 }

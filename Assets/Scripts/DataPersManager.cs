@@ -8,11 +8,8 @@ public class DataPersManager : MonoBehaviour
 {
     public static DataPersManager instance;
 
-    public Text playerText;  // variable, name of the player (Text)
-    public string playerStr;
-    public string bestScoreStr;
-    public int bestScore;  // current best score of the player
-    public Text scoreText, bestScoreText, gameOverScoreText;   // For UI
+    public string playerStr;  // variable, name of the player as datum persistence
+    public int bestScore;  // current best score of the player as datum persistence
 
     private void Awake()
     {
@@ -63,11 +60,9 @@ public class DataPersManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(jsonFile);
             // assign value of player (class SaveData) to player (class DataPersManager)
             playerStr = data.playerData;
-            playerText.text = playerStr;
             bestScore = data.bestScoreData;
         }
         else
             Debug.Log("No hay datos guardados");
-        
     }
 }

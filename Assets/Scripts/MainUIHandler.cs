@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class MainUIHandler : MonoBehaviour
 {
     private MainManager mainManager;
+    //public Text scoreMainUIText;
     public Text playerNameMainUI;
-    public Text scoreMainUIText;
     public Text bestScoreMainUIText;
+    public Button clearBestScoreBtn;
+    public Button backToMenuBtn;
+    private Button btn1, btn2;
 
     // Start is called before the first frame update
     void Start()
@@ -18,28 +21,40 @@ public class MainUIHandler : MonoBehaviour
         {
             // Put the player's name in gameObject PlayerText (in Editor)
             playerNameMainUI.text = "Player: " + DataPersManager.instance.playerStr;
-            // Debug.Log("(MainUIHandler.Start) -Almacenado en DataPersManager.instance.playerStr: " + DataPersManager.instance.playerStr);
 
             // Put the best score in gameObject BestScoreText
-            //Debug.Log("(MainUIHandler.Start) -Almacenado en DataPersManager.instance.bestScore: " + DataPersManager.instance.bestScore);
             bestScoreMainUIText.text = "Best score: " + DataPersManager.instance.bestScore.ToString();
-            Debug.Log("(MainUIHandler.Start) -Recien guardado en bestScoreMainUIText.text: " + bestScoreMainUIText.text);
         }
+        btn1 = clearBestScoreBtn.GetComponent<Button>();
+        btn2 = backToMenuBtn.GetComponent<Button>();
+        btn1.onClick.AddListener(ClearBestScore);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //scoreMainUIText.text = mainManager.scoreText.text;
+        btn2.onClick.AddListener(BackToMenu);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("menu");
+        if (Input.GetKeyDown(KeyCode.C))
+            ClearBestScore();
+
+        if (Input.GetButtonDown("BackToMenu"))
+            BackToMenu();
+        
+    }
+
+    public void ClearBestScore()
+    {
+        DataPersManager.instance.bestScore = 0;
+        bestScoreMainUIText.text = "Best score: " + DataPersManager.instance.bestScore.ToString();
+        Debug.Log("Best score cleaned");
     }
 
     public void BackToMenu()
     {
-        Debug.Log("mainManager.m_GameOver: " + mainManager.m_GameOver);
-        if (mainManager.m_GameOver)
-        {
-            //back to Menu.
-            SceneManager.LoadScene(0);
-        }
+        //Debug.Log("mainManager.m_GameOver: " + mainManager.m_GameOver + " ...return to menu");
+        //back to Menu.
+        SceneManager.LoadScene(0);
     }
 }

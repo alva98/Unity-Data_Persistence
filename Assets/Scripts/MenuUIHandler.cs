@@ -1,10 +1,11 @@
-//using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using UnityEngine.TextCore;
 
 // Sets the script to be executed later than all default scripts
 // This is helpful for UI, since other things may need to be initialized before setting the UI
@@ -14,7 +15,7 @@ public class MenuUIHandler : MonoBehaviour
 {
     //public InputField playerInput;
     public Text playerNameText;
-    private bool isActive=true;
+    //private bool isActive;
     public GameObject StartGame;
 
     public void Start()
@@ -32,21 +33,23 @@ public class MenuUIHandler : MonoBehaviour
     // Load a scene
     public void StartScene()
     {
-        if(DataPersManager.instance.playerStr == null)
+        if(DataPersManager.instance.playerStr == null || DataPersManager.instance.playerStr == "")
         {
-            Debug.Log("(MenuUIHandler.StartScene) -No se coloco el nombre del usuario.");
+            Debug.Log("No se coloco el nombre del jugador.");
+            //isActive = false;
+            SceneManager.LoadScene(0);
         }
-
-        if (isActive)
+        else
         {
+            //isActive = true;
             SceneManager.LoadScene(1);
-        }        
+        }
     }
 
     // Exit of the app
     public void Exit()
     {
-        Debug.Log("Usuario: " + playerNameText.text);
+        Debug.Log("Terminado --- Usuario: " + DataPersManager.instance.playerStr);
         // save name of player on exit
         DataPersManager.instance.SavePlayer();
 
